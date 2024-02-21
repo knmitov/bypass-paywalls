@@ -1,0 +1,1 @@
+# capital-bg-paywall-remover
