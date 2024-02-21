@@ -5,6 +5,7 @@
 // @description  Capital.bg Paywall Remover
 // @author       Kiril Mitov
 // @match        https://www.capital.bg/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=capital.bg
 // @updateURL    https://github.com/knmitov/capital-bg-paywall-remover/raw/main/capital-bg-paywall-remover.user.js
 // @downloadURL  https://github.com/knmitov/capital-bg-paywall-remover/raw/main/capital-bg-paywall-remover.user.js
 // @grant        none
