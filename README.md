@@ -1,17 +1,8 @@
-# Capital.bg Paywall Remover
+# Bypass Paywalls
 
 ## Introduction
 
-This repository contains a userscript designed to remove the paywall from [Capital.bg](https://www.capital.bg/)
-
-You would still need a subscription to view the archived articles.
-
-## Table of Contents:
-
-1. [Introduction](#introduction)
-2. [Installation](#installation)
-4. [Contribution](#contribution)
-5. [License](#license)
+This repository contains a userscript designed to bypass paywalls for selected sites.
 
 ## Installation
 
@@ -20,13 +11,16 @@ You would still need a subscription to view the archived articles.
     - [Tampermonkey for Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
     - [Tampermonkey for Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
     - [Tampermonkey for Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
-    - [Tampermonkey for Opera/OperaGX](https://addons.opera.com/en-gb/extensions/details/tampermonkey-beta/)
 
 2. **Install the Script**:
-   [Click Here and Press Install](capital-bg-paywall-remover.user.js?raw=True).
+   [Click Here and Press Install](bypass-paywalls.user.js?raw=True).
 
 3. **Enable the Script**:
    Enable the script by clicking the switch next to the script name in the Tampermonkey Dashboard.
+
+## Bypass the following sites' paywalls
+
+[capital.bg](https://www.capital.bg/)
 
 ## Contribution
 
