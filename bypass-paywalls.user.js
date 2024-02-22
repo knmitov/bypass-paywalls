@@ -10,36 +10,58 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
-    function removePaywallElements() {
-        const pooolWidget = document.getElementById('poool-widget');
-        if (pooolWidget) {
-            pooolWidget.remove();
-        }
+    const domainActions = [
+        {
+            domain: 'capital.bg',
+            action: () => {
+                const removePaywallElements = () => {
+                    const pooolWidget = document.getElementById('poool-widget');
+                    if (pooolWidget) {
+                        pooolWidget.remove();
+                    }
 
-        const pooolBanner = document.querySelector('.content.poool-banner');
-        if (pooolBanner) {
-            pooolBanner.removeAttribute('style');
-        }
+                    const pooolBanner = document.querySelector('.content.poool-banner');
+                    if (pooolBanner) {
+                        pooolBanner.removeAttribute('style');
+                    }
+                }
+
+                // Initial execution
+                removePaywallElements();
+
+                // Observe DOM changes
+                const observer = new MutationObserver(mutationsList => {
+                    for (const mutation of mutationsList) {
+                        if (mutation.type === 'childList') {
+                            removePaywallElements();
+                        }
+                    }
+                });
+
+                observer.observe(document.documentElement, {
+                    childList: true,
+                    subtree: true
+                });
+            }
+        },
+        // {
+        //   domain: 'example.com',
+        //   action: () => {
+        //     // ...
+        //   }
+        // },
+    ];
+
+    // Find matching domain-specific logic and execute it
+    const currentDomain = window.location.hostname;
+    const currentAction = domainActions.find(action => currentDomain.includes(action.domain));
+
+    if (currentAction) {
+        currentAction.action();
     }
 
-    // Initial execution
-    removePaywallElements();
-
-    // Observe DOM changes
-    const observer = new MutationObserver(mutationsList => {
-        for (const mutation of mutationsList) {
-            if (mutation.type === 'childList') {
-                removePaywallElements();
-            }
-        }
-    });
-
-    observer.observe(document.documentElement, {
-        childList: true,
-        subtree: true
-    });
 })();
 
