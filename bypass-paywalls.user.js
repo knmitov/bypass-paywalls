@@ -1,13 +1,12 @@
 // ==UserScript==
-// @name         Capital.bg Paywall Remover
-// @namespace    http://tampermonkey.net/
-// @version      0.2
-// @description  Capital.bg Paywall Remover
+// @name         Bypass Paywalls
+// @namespace    https://github.com/knmitov/bypass-paywalls/
+// @version      0.3
+// @description  Bypass Paywalls
 // @author       Kiril Mitov
 // @match        https://www.capital.bg/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=capital.bg
-// @updateURL    https://github.com/knmitov/capital-bg-paywall-remover/raw/main/capital-bg-paywall-remover.user.js
-// @downloadURL  https://github.com/knmitov/capital-bg-paywall-remover/raw/main/capital-bg-paywall-remover.user.js
+// @updateURL    https://github.com/knmitov/bypass-paywalls/raw/main/bypass-paywalls.user.js
+// @downloadURL  https://github.com/knmitov/bypass-paywalls/raw/main/bypass-paywalls.user.js
 // @grant        none
 // ==/UserScript==
 
