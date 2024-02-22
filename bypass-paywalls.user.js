@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         Bypass Paywalls
-// @namespace    https://github.com/knmitov/bypass-paywalls/
-// @version      0.3
 // @description  Bypass Paywalls
-// @author       Kiril Mitov
-// @match        https://www.capital.bg/*
+// @author       Kiril Mitov (https://github.com/knmitov)
+// @namespace    https://github.com/knmitov/bypass-paywalls/
+// @supportURL   https://github.com/knmitov/bypass-paywalls/issues
 // @updateURL    https://github.com/knmitov/bypass-paywalls/raw/main/bypass-paywalls.user.js
 // @downloadURL  https://github.com/knmitov/bypass-paywalls/raw/main/bypass-paywalls.user.js
-// @grant        none
+// @run-at       document-end
+// @version      0.1.0
+// @match        *://*.capital.bg/*
 // ==/UserScript==
 
 (function () {
@@ -17,51 +18,29 @@
         {
             domain: 'capital.bg',
             action: () => {
-                const removePaywallElements = () => {
-                    const pooolWidget = document.getElementById('poool-widget');
-                    if (pooolWidget) {
-                        pooolWidget.remove();
-                    }
+                new MutationObserver((mutations, observer) => {
+                    for (const mutation of mutations) {
+                        for (const node of mutation.addedNodes) {
+                            if (node.matches('.p3-advanced-paywall')) {
+                                document.querySelector('.poool-banner')?.removeAttribute('style');
+                                node.remove();
 
-                    const pooolBanner = document.querySelector('.content.poool-banner');
-                    if (pooolBanner) {
-                        pooolBanner.removeAttribute('style');
-                    }
-                }
+                                observer.disconnect();
 
-                // Initial execution
-                removePaywallElements();
-
-                // Observe DOM changes
-                const observer = new MutationObserver(mutationsList => {
-                    for (const mutation of mutationsList) {
-                        if (mutation.type === 'childList') {
-                            removePaywallElements();
+                                break;
+                            }
                         }
                     }
-                });
-
-                observer.observe(document.documentElement, {
-                    childList: true,
-                    subtree: true
-                });
+                }).observe(document.body, {childList: true, subtree: true});
             }
-        },
-        // {
-        //   domain: 'example.com',
-        //   action: () => {
-        //     // ...
-        //   }
-        // },
+        }
     ];
 
-    // Find matching domain-specific logic and execute it
     const currentDomain = window.location.hostname;
-    const currentAction = domainActions.find(action => currentDomain.includes(action.domain));
+    const currentAction = domainActions.find(value => currentDomain.includes(value.domain));
 
     if (currentAction) {
         currentAction.action();
     }
-
 })();
 
