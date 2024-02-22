@@ -14,32 +14,26 @@
 (function() {
     'use strict';
 
-    // Remove the div with id "poool-widget"
-    function removePooolWidget() {
+    function removePaywallElements() {
         const pooolWidget = document.getElementById('poool-widget');
         if (pooolWidget) {
             pooolWidget.remove();
         }
-    }
 
-    // Remove style tag of the div with classes "content poool-banner"
-    function setPooolBannerHeight() {
         const pooolBanner = document.querySelector('.content.poool-banner');
         if (pooolBanner) {
             pooolBanner.removeAttribute('style');
         }
     }
 
-    // Initial execution of functions
-    removePooolWidget();
-    setPooolBannerHeight();
+    // Initial execution
+    removePaywallElements();
 
-    // Observe DOM changes and reapply styles
-    const observer = new MutationObserver(function(mutationsList) {
-        for (let mutation of mutationsList) {
+    // Observe DOM changes
+    const observer = new MutationObserver(mutationsList => {
+        for (const mutation of mutationsList) {
             if (mutation.type === 'childList') {
-                removePooolWidget();
-                setPooolBannerHeight();
+                removePaywallElements();
             }
         }
     });
@@ -49,3 +43,4 @@
         subtree: true
     });
 })();
+
