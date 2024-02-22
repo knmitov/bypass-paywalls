@@ -4,6 +4,8 @@
 
 This repository contains a userscript designed to remove the paywall from [Capital.bg](https://www.capital.bg/)
 
+You would still need a subscription to view the archived articles.
+
 ## Table of Contents:
 
 1. [Introduction](#introduction)
